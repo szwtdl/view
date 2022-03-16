@@ -1,0 +1,32 @@
+{
+    "name": "szwtdl/view",
+    "description": "swoole-ext wtdl view",
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "szpengjian",
+            "email": "szpengjian@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "ext-swoole": ">=4.4",
+        "twig/twig": "^3.3",
+        "duncan3dc/blade": "^4.11"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Szwtdl\\View\\": "src/",
+            "Tests\\": "tests/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
+}
