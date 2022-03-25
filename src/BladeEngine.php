@@ -6,15 +6,17 @@ declare(strict_types=1);
  * * This file is part of szwtdl/view.
  * @link     https://www.szwtdl.cn
  * @document https://doc.szwtdl.cn
- * @license  https://github.com/wtdl-swoole/wtdl/blob/master/LICENSE
+ * @license  https://github.com/szwtdl/view/blob/master/LICENSE
  */
+
 namespace Szwtdl\View;
 
 use duncan3dc\Laravel\BladeInstance;
+use Szwtdl\View\ViewInterface;
 
 class BladeEngine implements ViewInterface
 {
-    public function render($template, $data, $config): string
+    public function render($template, $data = [], $config = []): string
     {
         $blade = new BladeInstance($config['view_path'], $config['cache_path']);
         return $blade->render($template, $data);

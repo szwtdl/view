@@ -8,9 +8,10 @@ declare(strict_types=1);
  * @document https://doc.szwtdl.cn
  * @license  https://github.com/wtdl-swoole/wtdl/blob/master/LICENSE
  */
+
 namespace Szwtdl\View;
 
 interface ViewInterface
 {
-    public function render($template, $data, $config): string;
+    public function render(string $template, array $data = [], array $config = []): string;
 }

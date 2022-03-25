@@ -8,9 +8,11 @@ declare(strict_types=1);
  * @document https://doc.szwtdl.cn
  * @license  https://github.com/wtdl-swoole/wtdl/blob/master/LICENSE
  */
+
 namespace Szwtdl\View;
 
 use Swoole\Exception;
+use Szwtdl\View\ViewInterface;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -19,7 +21,14 @@ use Twig\Loader\FilesystemLoader;
 
 class TwigEngine implements ViewInterface
 {
-    public function render($filename, $data, $config): string
+    /**
+     * @param string $filename
+     * @param $data
+     * @param $config
+     * @return string
+     * @throws Exception
+     */
+    public function render(string $filename, $data = [], $config = []): string
     {
         $loader = new FilesystemLoader($config['view_path']);
         $twig = new Environment($loader, [
@@ -27,7 +36,7 @@ class TwigEngine implements ViewInterface
             'debug' => true,
         ]);
         $asset = new \Twig\TwigFunction('asset', function (string $name) {
-            return '/' . $name;
+            return DIRECTORY_SEPARATOR.$name;
         });
         $twig->addFunction($asset);
         try {
