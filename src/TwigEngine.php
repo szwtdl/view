@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace Szwtdl\View;
 
 use Swoole\Exception;
-use Szwtdl\View\ViewInterface;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -32,11 +31,11 @@ class TwigEngine implements ViewInterface
     {
         $loader = new FilesystemLoader($config['view_path']);
         $twig = new Environment($loader, [
-            'cache' => false,
+            'cache' => $config['cache_path'],
             'debug' => true,
         ]);
         $asset = new \Twig\TwigFunction('asset', function (string $name) {
-            return DIRECTORY_SEPARATOR.$name;
+            return DIRECTORY_SEPARATOR . $name;
         });
         $twig->addFunction($asset);
         try {

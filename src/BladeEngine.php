@@ -12,13 +12,11 @@ declare(strict_types=1);
 namespace Szwtdl\View;
 
 use duncan3dc\Laravel\BladeInstance;
-use Szwtdl\View\ViewInterface;
 
 class BladeEngine implements ViewInterface
 {
     public function render($template, $data = [], $config = []): string
     {
-        $blade = new BladeInstance($config['view_path'], $config['cache_path']);
-        return $blade->render($template, $data);
+        return (new BladeInstance($config['view_path'], $config['cache_path']))->render($template, $data);
     }
 }

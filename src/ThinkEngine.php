@@ -2,7 +2,6 @@
 
 namespace Szwtdl\View;
 
-use Szwtdl\View\ViewInterface;
 
 class ThinkEngine implements ViewInterface
 {
